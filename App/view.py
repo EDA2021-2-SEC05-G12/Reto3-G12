@@ -150,17 +150,17 @@ while True:
             durationSec = UFO['duration (seconds)']
             print(f'{datetime}\t\t{city}\t\t{shape}\t\t{durationSec}')
 
-            # Últimos 5
-            print()
-            print('Últimos 5 avistamientos:')
-            print('Fecha\t\tCiudad\t\tForma\t\tDuración (s)')
-            for i in lastOnes:
-                UFO = lt.getElement(catalog['UFOs'], i)
-                datetime = UFO['datetime']
-                city = UFO['city']
-                shape = UFO['shape']
-                durationSec = UFO['duration (seconds)']
-                print(f'{datetime}\t\t{city}\t\t{shape}\t\t{durationSec}')
+        # Últimos 5
+        print()
+        print('Últimos 5 avistamientos:')
+        print('Fecha\t\tCiudad\t\tForma\t\tDuración (s)')
+        for i in lastOnes:
+            UFO = lt.getElement(catalog['UFOs'], i)
+            datetime = UFO['datetime']
+            city = UFO['city']
+            shape = UFO['shape']
+            durationSec = UFO['duration (seconds)']              
+            print(f'{datetime}\t\t{city}\t\t{shape}\t\t{durationSec}')
 
 
     elif int(inputs[0]) == 2: # Requerimiento 1
