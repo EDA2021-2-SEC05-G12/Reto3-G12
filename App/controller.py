@@ -30,9 +30,45 @@ El controlador se encarga de mediar entre la vista y el modelo.
 """
 
 # Inicialización del Catálogo de libros
+def initCatalog():
+    """
+    Llama la funcion de inicializacion del catalogo del modelo.
+    """
+    catalog = model.newCatalog()
+    return catalog
 
 # Funciones para la carga de datos
+def loadData(catalog):
+
+    loadUFOs(catalog)
+
+def loadUFOs(catalog):
+    UFOsFile = cf.data_dir + 'UFOS-utf8-small.csv'
+    input_file = csv.DictReader(open(UFOsFile, encoding='utf-8'))
+    for UFO in input_file:
+        model.addUFO(catalog, UFO)
+
 
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo
+def getUFOsByCity(catalog,cityName):
+    return model.getUFOsByCity(catalog,cityName)
+
+def getLargestDuration(catalog):
+    return model.getLargestDuration(catalog)
+
+def getUFOsByRange(catalog,inf,sup):
+    return model.getUFOsByRange(catalog,inf,sup)
+
+def getUFOsByTime(catalog,timeInf,timeSup):
+    return model.getUFOsByTime(catalog,timeInf,timeSup)
+
+def getOldestDate(catalog):
+    return model.getOldestDate(catalog)
+
+def getUFOsByDate(catalog,dateInf,dateSup):
+    return model.getUFOsByDate(catalog,dateInf,dateSup)
+
+def getUFOsByCoordinates(catalog,longInf,longSup,latInf,latSup):
+    return model.getUFOsByCoordinates(catalog,longInf,longSup,latInf,latSup)
