@@ -25,7 +25,7 @@ import sys
 import controller
 from DISClib.ADT import list as lt
 assert cf
-
+import time 
 
 """
 La vista se encarga de la interacción con el usuario
@@ -127,6 +127,7 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1: # Carga de datos
+        start_time = time.process_time()
         print("Cargando información de los archivos ....")
         catalog = initCatalog()
         loadData(catalog)
@@ -161,9 +162,12 @@ while True:
             shape = UFO['shape']
             durationSec = UFO['duration (seconds)']              
             print(f'{datetime}\t\t{city}\t\t{shape}\t\t{durationSec}')
-
+        stop_time = time.process_time()
+        etms = (stop_time - start_time)*1000
+        print('El tiempo de ejecucion es ' + str(etms) + 'ms')
 
     elif int(inputs[0]) == 2: # Requerimiento 1
+        start_time = time.process_time()
         cityName = input('Ingrese el nombre de la ciudad: ')
         cityUFOs = getUFOsByCity(catalog,cityName)
         # El total de avistamientos
@@ -177,8 +181,12 @@ while True:
         print('A continuación, los primeros y últimos 3 avistamientos listados cronológicamente:')
         print()
         printResults(first3,last3)
+        stop_time = time.process_time()
+        etms = (stop_time - start_time)*1000
+        print('El tiempo de ejecucion es ' + str(etms) + 'ms')
 
     elif int(inputs[0]) == 3: # Requerimiento 2
+        start_time = time.process_time()
         inf = int(input('Ingrese el límite inferior (en segundos): '))
         sup = int(input('Ingrese el línimte superior (en segundos): '))
         largest,sizeLargest = getLargestDuration(catalog)
@@ -195,8 +203,12 @@ while True:
 
         print('A continuación, los primeros y últimos 3 avistamientos dentro del rango de duración')
         printResults(first3,last3)
+        stop_time = time.process_time()
+        etms = (stop_time - start_time)*1000
+        print('El tiempo de ejecucion es ' + str(etms) + 'ms')
 
     elif int(inputs[0]) == 4: # Requerimiento 3
+        start_time = time.process_time()
         timeInf = input('Ingrese el límite inferior (HH:MM): ')
         timeSup = input('Ingrese el límite superior (HH:MM): ')
         UFOsInRange = getUFOsByTime(catalog,timeInf,timeSup)
@@ -209,8 +221,12 @@ while True:
         last3 = lt.subList(UFOsInRange, sizeInRange - 2, 3)
         print('A continuación, los primeros y últimos 3 avistamientos dentro del rango de horas')
         printResults(first3,last3)
+        stop_time = time.process_time()
+        etms = (stop_time - start_time)*1000
+        print('El tiempo de ejecucion es ' + str(etms) + 'ms')
 
     elif int(inputs[0]) == 5: # Requerimiento 4
+        start_time = time.process_time()
         dateInf = input('Ingrese el límite inferior (AAAA-MM-DD): ')
         dateSup = input('Ingrese el límite superior (AAAA-MM-DD): ')
         UFOsInRange = getUFOsByDate(catalog, dateInf, dateSup)
@@ -228,8 +244,12 @@ while True:
         last3 = lt.subList(UFOsInRange, sizeInRange - 2, 3)
         print('A continuación, los primeros y últimos 3 avistamientos dentro del rango de fechas')
         printResults(first3, last3)
+        stop_time = time.process_time()
+        etms = (stop_time - start_time)*1000
+        print('El tiempo de ejecucion es ' + str(etms) + 'ms')
 
     elif int(inputs[0]) == 6: # Requerimiento 5
+        start_time = time.process_time()
         longInf,longSup = input('Ingrese los límites mínimo y máximo de longitud (Separados por espacio y usando . como separador): ').split(' ')
         latInf, latSup = input('Ingrese los límites mínimo y máximo de latitud (Separados por espacio y usando . como separador): ').split(' ')
         UFOsInCoordinates = getUFOsByCoordinates(catalog,longInf,longSup,latInf,latSup)
@@ -241,7 +261,9 @@ while True:
         last5 = lt.subList(UFOsInCoordinates, sizeInCoordinates-4, 5)
         print('A continuación, los primeros y últimos 5 avistamientos dentro del rango de coordenadas')
         printFifthRequirement(first5,last5)
-
+        stop_time = time.process_time()
+        etms = (stop_time - start_time)*1000
+        print('El tiempo de ejecucion es ' + str(etms) + 'ms')
 
     else:
         sys.exit(0)
