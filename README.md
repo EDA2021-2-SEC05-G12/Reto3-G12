@@ -1,4 +1,4 @@
-Alejandro Hernández 202111716 req 2---Luisa Hernández 202114093 req 3
+Alejandro Hernández 202111716 req 2 a.hernandezo2@uniandes.edu.co---Luisa Hernández 202114093 req 3 lg.hernandezp1@uniandes.edu.co
 
 #ISIS1225 - Librerias de soporte
 
